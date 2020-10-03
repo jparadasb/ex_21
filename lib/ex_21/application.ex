@@ -6,6 +6,7 @@ defmodule Ex21.Application do
   use Application
 
   def start(_type, _args) do
+    card_values_seed()
     children = [
       # Start the Ecto repository
       Ex21.Repo,
@@ -30,5 +31,10 @@ defmodule Ex21.Application do
   def config_change(changed, _new, removed) do
     Ex21Web.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp card_values_seed do
+    <<i1 :: unsigned-integer-32, i2 :: unsigned-integer-32, i3 :: unsigned-integer-32>> = :crypto.strong_rand_bytes(12)
+    :rand.seed(:exsplus, {i1, i2, i3})
   end
 end
