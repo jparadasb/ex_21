@@ -15,9 +15,10 @@ defmodule Ex21.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Ex21.PubSub},
       # Start the Endpoint (http/https)
-      Ex21Web.Endpoint
+      Ex21Web.Endpoint,
       # Start a worker by calling: Ex21.Worker.start_link(arg)
       # {Ex21.Worker, arg}
+      {Ex21.Sups.GameSup, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
