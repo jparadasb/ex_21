@@ -1,0 +1,5 @@
+"Language: en\n"
+
+## Start button
+msgid "start"
+msgstr "Start Game"
