@@ -9,6 +9,7 @@ To start your Phoenix server:
   export DB_PORT="5432"
   export DB_USER="postgre"
   export DB_PASSWORD="postgre"
+  export DB_NAME="ex_21_development"
 ```
 
 - Install dependencies with `mix deps.get`
