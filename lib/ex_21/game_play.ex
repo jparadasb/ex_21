@@ -5,7 +5,11 @@ defmodule Ex21.GamePlay do
   @max 21
 
   def start do
-    Level.next_level()
+    next_level(0)
+  end
+
+  def next_level(level) do
+    Level.next_level(level)
     |> Map.merge(%{accum: Enum.random(1..10), on_hold: nil})
   end
 
@@ -13,12 +17,12 @@ defmodule Ex21.GamePlay do
     %{game_state | accum: accum + value, cards: cards - 1}
   end
 
-  def set_on_hold(game_state = %{cards: cards}, value) do
-    %{game_state | on_hold: value, cards: cards - 1}
+  def set_on_hold(game_state, value) do
+    %{game_state | on_hold: value}
   end
 
-  def add_on_hold(game_state = %{on_hold: on_hold, accum: accum}) do
-    %{game_state | accum: accum + on_hold, on_hold: nil}
+  def add_on_hold(game_state = %{on_hold: on_hold, accum: accum, cards: cards}) do
+    %{game_state | accum: accum + on_hold, on_hold: nil, cards: cards - 1}
   end
 
   def outside_threshold(%{accum: accum}) do

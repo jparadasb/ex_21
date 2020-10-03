@@ -7,6 +7,8 @@ defmodule Ex21.Application do
 
   def start(_type, _args) do
     card_values_seed()
+    Ex21.GameStorage.setup()
+
     children = [
       # Start the Ecto repository
       Ex21.Repo,
@@ -18,7 +20,8 @@ defmodule Ex21.Application do
       Ex21Web.Endpoint,
       # Start a worker by calling: Ex21.Worker.start_link(arg)
       # {Ex21.Worker, arg}
-      {Ex21.Sups.GameSup, []}
+      {Ex21.Sups.GameSup, []},
+      {Registry, keys: :unique, name: :game_registry},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
