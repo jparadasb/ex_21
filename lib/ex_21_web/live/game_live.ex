@@ -1,5 +1,6 @@
-defmodule Ex21Web.PageLive do
+defmodule Ex21Web.GameLive do
   use Ex21Web, :live_view
+  alias Ex21.GamePlay
 
   @impl true
   def mount(_params, _session, socket) do

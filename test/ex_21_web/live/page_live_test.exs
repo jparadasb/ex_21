@@ -1,4 +1,4 @@
-defmodule Ex21Web.PageLiveTest do
+defmodule Ex21Web.GameLiveTest do
   use Ex21Web.ConnCase
 
   import Phoenix.LiveViewTest
